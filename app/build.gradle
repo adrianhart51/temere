@@ -12,13 +12,14 @@ android {
         enabled = true
     }
     defaultConfig {
-        applicationId "com.elifox.legocatalog"
+        applicationId "id.ac.ui.cs.mobileprogramming.adrianhartanto.temere"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        testInstrumentationRunner "com.elifox.legocatalog.util.AppTestRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         versionCode 1
-        versionName "1"
+        versionName "1.0"
         vectorDrawables.useSupportLibrary true
+
 
         buildConfigField 'String', 'API_DEVELOPER_TOKEN', "\"${api_developer_token}\""
     }
