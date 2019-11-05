@@ -18,7 +18,7 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ViewHolder>(DiffCa
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val category = getItem(position)
         holder.apply {
-            bind(createOnClickListener(category.category_id, category.category_name), category)
+            bind(createOnClickListener(category.id, category.name), category)
             itemView.tag = category
         }
     }
@@ -53,7 +53,7 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ViewHolder>(DiffCa
 private class DiffCallback : DiffUtil.ItemCallback<Category>() {
 
     override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
-        return oldItem.category_id == newItem.category_id
+        return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {

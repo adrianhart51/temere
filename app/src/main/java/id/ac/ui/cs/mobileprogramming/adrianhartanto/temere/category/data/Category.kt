@@ -7,8 +7,8 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "category")
 data class Category(
     @PrimaryKey
-    @field:SerializedName("category_id")
-    val category_id : Int,
-    @field:SerializedName("category_name")
-    val category_name : String) {
+    @field:SerializedName("id")
+    val id : Int,
+    @field:SerializedName("name")
+    val name : String) {
 }
