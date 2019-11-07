@@ -10,6 +10,8 @@ import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.category.ui.CategoryV
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.legoset.ui.LegoSetViewModel
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.legoset.ui.LegoSetsViewModel
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.legotheme.ui.LegoThemeViewModel
+import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.ui.RestaurantViewModel
+import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.ui.RestaurantsViewModel
 
 @Suppress("unused")
 @Module
@@ -33,6 +35,16 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CategoryViewModel::class)
     abstract fun bindCategoryViewModel(viewModel: CategoryViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RestaurantsViewModel::class)
+    abstract fun bindRestaurantsViewModel(viewModel: RestaurantsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RestaurantViewModel::class)
+    abstract fun bindRestaurantViewModel(viewModel: RestaurantViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

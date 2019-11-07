@@ -12,7 +12,7 @@
 
         <action
             android:id="@+id/action_theme_fragment_to_sets_fragment"
-            app:destination="@id/legosets_fragment"
+            app:destination="@id/restaurants_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -28,6 +28,32 @@
         <action
             android:id="@+id/action_theme_fragment_to_sets_fragment"
             app:destination="@id/legosets_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/restaurants_fragment"
+        android:name="id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.ui.RestaurantsFragment"
+        android:label="@string/restaurants_title"
+        tools:layout="@layout/fragment_legosets">
+
+        <argument
+            android:name="categoryId"
+            app:argType="integer"
+            android:defaultValue="-1"/>
+
+        <argument
+            android:name="categoryName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+
+        <action
+            android:id="@+id/action_to_restaurant_detail_fragment"
+            app:destination="@id/restaurant_detail_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -58,6 +84,17 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/restaurant_detail_fragment"
+        android:name="id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.ui.RestaurantFragment"
+        android:label="@string/restaurant_details_title"
+        tools:layout="@layout/fragment_restaurant">
+
+        <argument
+            android:name="id"
+            app:argType="string" />
     </fragment>
 
     <fragment

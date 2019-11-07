@@ -11,6 +11,7 @@ import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.api.LegoService
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.api.ZomatoService
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.category.data.CategoryRemoteDataSource
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.legoset.data.LegoSetRemoteDataSource
+import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.data.RestaurantRemoteDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
@@ -48,6 +49,11 @@ class AppModule {
     fun provideCategoryRemoteDataSource(zomatoService: ZomatoService)
             = CategoryRemoteDataSource(zomatoService)
 
+    @Singleton
+    @Provides
+    fun provideRestaurantRemoteDataSource(zomatoService: ZomatoService)
+            = RestaurantRemoteDataSource(zomatoService)
+
     @LegoAPI
     @Provides
     fun provideLegoApiOkHttpClient(
@@ -81,6 +87,10 @@ class AppModule {
     @Singleton
     @Provides
     fun provideCategoryDao(db: AppDatabase) = db.categoryDao()
+
+    @Singleton
+    @Provides
+    fun provideRestaurantDao(db: AppDatabase) = db.restaurantDao()
 
     @CoroutineScropeIO
     @Provides

@@ -14,13 +14,14 @@ import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.legoset.data.LegoSet
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.legotheme.data.LegoTheme
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.legotheme.data.LegoThemeDao
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.legoset.data.LegoSetDao
+import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.data.Restaurant
+import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.data.RestaurantDao
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.worker.SeedDatabaseWorker
 
 /**
  * The Room database for this app
  */
-@Database(entities = [LegoTheme::class,
-    LegoSet::class, Category::class],
+@Database(entities = [LegoTheme::class, LegoSet::class, Category::class, Restaurant::class],
         version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -30,6 +31,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun legoThemeDao(): LegoThemeDao
 
     abstract fun categoryDao(): CategoryDao
+
+    abstract fun restaurantDao(): RestaurantDao
 
     companion object {
 

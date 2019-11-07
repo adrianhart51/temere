@@ -5,16 +5,20 @@
     <string name="grid" translation_description="Common Filter">Переключение между сеткой и листом</string>
     <string name="categories_title">Pilih Kategori</string>
     <string name="legothemes_title">Категории</string>
+    <string name="restaurants_title">Restoran Terdekat</string>
     <string name="legosets_title">Все наборы</string>
+    <string name="restaurant_details_title">Detail Restaurant</string>
     <string name="legoset_details_title">О наборе</string>
     <string name="navigation_drawer_header_content_description">Логотип меню</string>
     <string name="santa_claus_quote">Дед Мороз занесет вам этот набор на Новый Год</string>
     <string name="menu_item_share" translation_description="The label for the Share menu item">Поделится</string>
     <string name="number_of_parts">Количество деталей: %d</string>
     <string name="year">Год: %d</string>
+    <string name="share_restaurant">Cek %s Restoran : %s</string>
     <string name="share_lego_set">Отличный %s Lego набор : %s</string>
 
     <!-- Accessibility -->
     <string name="a11y_legoset_item_image">Изображение Lego набора</string>
+    <string name="a11y_restaurant_item_image">Gambar Restoran</string>
 
 </resources>
