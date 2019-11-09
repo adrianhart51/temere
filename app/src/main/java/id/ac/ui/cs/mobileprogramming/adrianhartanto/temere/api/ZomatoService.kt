@@ -20,10 +20,10 @@ interface ZomatoService {
     @GET("v2.1/search")
     suspend fun searchRestaurants(
         @Query("category") categoryId: Int?,
-        @Query("lat") latitude: Double = -6.595038,
-        @Query("lon") longitude: Double = 106.816635,
+        @Query("lat") latitude: Double?,
+        @Query("lon") longitude: Double?,
         @Query("start") start: Int = 0,
-        @Query("count") count: Int = 10,
+        @Query("count") count: Int = 50,
         @Query("sort") sort: String = "real_distance",
         @Query("order") order: String = "asc"
     ): Response<SearchRestaurantsResponse>

@@ -8,8 +8,8 @@ import javax.inject.Inject
 
 class RestaurantPageDataSourceFactory @Inject constructor(
     private val categoryId: Int?,
-    private val latitude: Double,
-    private val longitude: Double,
+    private val latitude: Double?,
+    private val longitude: Double?,
     private val dataSource: RestaurantRemoteDataSource,
     private val dao: RestaurantDao,
     private val scope: CoroutineScope) : DataSource.Factory<Int, Restaurant>() {

@@ -109,4 +109,8 @@ dependencies {
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
     androidTestImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     androidTestImplementation "org.mockito:mockito-android:$rootProject.mockitoAndroidVersion"
+
+    implementation "com.google.android.gms:play-services-location:$rootProject.playServicesLocationVersion"
+
+    implementation "com.github.quickpermissions:quickpermissions-kotlin:$rootProject.quickPermissionsVersion"
 }

@@ -16,10 +16,12 @@ class RestaurantsViewModel @Inject constructor(private val repository: Restauran
 
     var connectivityAvailable: Boolean = false
     var categoryId: Int? = null
+    var latitude: Double? = null
+    var longitude: Double? = null
 
     val restaurants by lazy {
         repository.observePagedSets(
-                connectivityAvailable, categoryId, ioCoroutineScope)
+                connectivityAvailable, categoryId, latitude, longitude, ioCoroutineScope)
     }
 
     /**

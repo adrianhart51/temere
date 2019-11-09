@@ -2,9 +2,11 @@ package id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.ui
 
 import android.os.Bundle
 import android.view.*
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,6 +46,23 @@ class RestaurantsFragment : Fragment(), Injectable {
 
     private var isLinearLayoutManager: Boolean = false
 
+    fun backToCategoryFragment() {
+        // This callback will only be called when MyFragment is at least Started.
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            // Handle the back button event
+            val direction = RestaurantsFragmentDirections.actionToCategoryFragment()
+            findNavController().navigate(direction)
+        }
+
+        // The callback can be enabled or disabled here or in the lambda
+        callback.handleOnBackPressed()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        backToCategoryFragment()
+    }
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -52,6 +71,8 @@ class RestaurantsFragment : Fragment(), Injectable {
         viewModel = injectViewModel(viewModelFactory)
         viewModel.connectivityAvailable = ConnectivityUtil.isConnected(context!!)
         viewModel.categoryId = if (args.categoryId == -1) null else args.categoryId
+        viewModel.latitude = args.latitude!!.toDouble()
+        viewModel.longitude = args.longitude!!.toDouble()
 
         binding = FragmentRestaurantsBinding.inflate(inflater, container, false)
         context ?: return binding.root

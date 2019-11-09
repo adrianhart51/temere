@@ -11,8 +11,8 @@
         tools:layout="@layout/fragment_themes">
 
         <action
-            android:id="@+id/action_theme_fragment_to_sets_fragment"
-            app:destination="@id/restaurants_fragment"
+            android:id="@+id/action_theme_fragment_to_location_fragment"
+            app:destination="@id/location_fragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -35,10 +35,40 @@
     </fragment>
 
     <fragment
+        android:id="@+id/location_fragment"
+        android:name="id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.location.ui.LocationFragment"
+        android:label="@string/categories_title"
+        tools:layout="@layout/fragment_themes">
+
+        <argument
+            android:name="categoryId"
+            app:argType="integer"
+            android:defaultValue="-1"/>
+
+        <action
+            android:id="@+id/action_theme_fragment_to_restaurants_fragment"
+            app:destination="@id/restaurants_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
         android:id="@+id/restaurants_fragment"
         android:name="id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.ui.RestaurantsFragment"
         android:label="@string/restaurants_title"
         tools:layout="@layout/fragment_legosets">
+
+        <argument
+            android:name="latitude"
+            app:argType="float"
+            android:defaultValue="0.0"/>
+
+        <argument
+            android:name="longitude"
+            app:argType="float"
+            android:defaultValue="0.0"/>
 
         <argument
             android:name="categoryId"
@@ -58,6 +88,19 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_to_category_fragment"
+            app:destination="@id/category_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_restaurants_fragment_to_category_fragment"
+            app:destination="@id/category_fragment"
+            app:popUpTo="@+id/category_fragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment

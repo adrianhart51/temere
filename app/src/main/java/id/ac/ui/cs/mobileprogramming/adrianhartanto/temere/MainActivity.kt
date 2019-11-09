@@ -11,11 +11,19 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.ui.RestaurantsFragment
 import androidx.navigation.ui.setupWithNavController
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.databinding.ActivityMainBinding
+import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.ui.RestaurantsFragmentDirections
 import javax.inject.Inject
+import android.R.id
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import androidx.navigation.fragment.findNavController
+
 
 class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
@@ -43,7 +51,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         // Set up navigation menu
-        binding.navigationView.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

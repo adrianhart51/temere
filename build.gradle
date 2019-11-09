@@ -46,11 +46,15 @@ buildscript {
         testRunnerVersion = '1.2.0'
         testRulesVersion = '1.2.0'
 
+        playServicesLocationVersion = '17.0.0'
+
+        quickPermissionsVersion = '0.4.1'
     }
 
     repositories {
         google()
         jcenter()
+        maven { url "http://jitpack.io/" }
     }
 
     dependencies {
@@ -69,6 +73,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 

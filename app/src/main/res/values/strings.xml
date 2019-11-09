@@ -2,7 +2,7 @@
 
     <!-- Resources that do not require translation -->
     <string name="app_name" translatable="false">Temere</string>
-    <string name="navigation_drawer_header_title" translatable="false">LEGO®</string>
+    <string name="navigation_drawer_header_title" translatable="false">TEMERE</string>
 
     <!-- Translatable resources -->
     <string name="filter" translation_description="Common Filter">Filter</string>

@@ -9,7 +9,7 @@ import javax.inject.Inject
  */
 class RestaurantRemoteDataSource @Inject constructor(private val service: ZomatoService) : BaseDataSource() {
 
-    suspend fun fetchRestaurants(categoryId: Int?, latitude: Double, longitude: Double, start: Int = 0, count: Int = 10)
+    suspend fun fetchRestaurants(categoryId: Int?, latitude: Double?, longitude: Double?, start: Int = 0, count: Int = 10)
             = getResult { service.searchRestaurants(categoryId, latitude, longitude, start, count) }
 
     suspend fun fetchRestaurant(restaurantId: Int) = getResult { service.getRestaurant(restaurantId) }

@@ -31,7 +31,7 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.ViewHolder>(DiffCa
 
     private fun createOnClickListener(id: Int, name: String): View.OnClickListener {
         return View.OnClickListener {
-            val direction = CategoryFragmentDirections.actionThemeFragmentToSetsFragment(id, name)
+            val direction = CategoryFragmentDirections.actionThemeFragmentToLocationFragment(id)
             it.findNavController().navigate(direction)
         }
     }

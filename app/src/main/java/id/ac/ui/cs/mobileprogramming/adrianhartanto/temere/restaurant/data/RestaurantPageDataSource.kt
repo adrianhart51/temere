@@ -13,15 +13,15 @@ import javax.inject.Inject
  */
 class RestaurantPageDataSource @Inject constructor(
     private val categoryId: Int?,
-    private val latitude: Double,
-    private val longitude: Double,
+    private val latitude: Double?,
+    private val longitude: Double?,
     private val dataSource: RestaurantRemoteDataSource,
     private val dao: RestaurantDao,
     private val scope: CoroutineScope) : PageKeyedDataSource<Int, Restaurant>() {
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Restaurant>) {
-        fetchData(1, params.requestedLoadSize) {
-            callback.onResult(it, null, 2)
+        fetchData(0, params.requestedLoadSize) {
+            callback.onResult(it, null, 1)
         }
     }
 

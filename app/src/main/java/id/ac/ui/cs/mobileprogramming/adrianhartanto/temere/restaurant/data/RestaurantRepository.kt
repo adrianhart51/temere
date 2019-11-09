@@ -16,15 +16,11 @@ import javax.inject.Singleton
 class RestaurantRepository @Inject constructor(private val dao: RestaurantDao,
                                                private val restaurantRemoteDataSource: RestaurantRemoteDataSource) {
 
-    // TODO get latitude and longitude from location service
-    val latitude: Double = -6.595038
-    val longitude: Double = 106.816635
-
-    fun observePagedSets(connectivityAvailable: Boolean, categoryId: Int?,
+    fun observePagedSets(connectivityAvailable: Boolean, categoryId: Int?, latitude: Double?, longitude: Double?,
                          coroutineScope: CoroutineScope) =
-            observeRemotePagedSets(categoryId, coroutineScope)
+            observeRemotePagedSets(categoryId, latitude, longitude, coroutineScope)
 
-    private fun observeRemotePagedSets(categoryId: Int?, ioCoroutineScope: CoroutineScope)
+    private fun observeRemotePagedSets(categoryId: Int?, latitude: Double?, longitude: Double?, ioCoroutineScope: CoroutineScope)
             : LiveData<PagedList<Restaurant>> {
         val dataSourceFactory = RestaurantPageDataSourceFactory(categoryId, latitude, longitude, restaurantRemoteDataSource,
                 dao, ioCoroutineScope)

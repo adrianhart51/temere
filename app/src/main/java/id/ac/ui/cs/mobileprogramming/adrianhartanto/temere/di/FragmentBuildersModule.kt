@@ -6,6 +6,7 @@ import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.category.ui.CategoryF
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.legoset.ui.LegoSetFragment
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.legoset.ui.LegoSetsFragment
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.legotheme.ui.LegoThemeFragment
+import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.location.ui.LocationFragment
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.ui.RestaurantFragment
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.ui.RestaurantsFragment
 
@@ -29,4 +30,7 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeRestaurantFragment(): RestaurantFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeLocationFragment(): LocationFragment
 }
