@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.*
+import com.google.android.gms.tasks.Task
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.R
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.data.Result
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.databinding.FragmentCategoriesBinding
@@ -51,6 +51,8 @@ class LocationFragment : Fragment(), Injectable {
     }
 
     fun getCurrentLocation(categoryId: Int) = runWithPermissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION) {
+        createLocationRequest()
+
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location: Location? ->
                 if (location != null) {
@@ -59,5 +61,19 @@ class LocationFragment : Fragment(), Injectable {
                     findNavController().navigate(direction)
                 }
             }
+    }
+
+    fun createLocationRequest() {
+        val locationRequest = LocationRequest.create()?.apply {
+            interval = 10000
+            fastestInterval = 5000
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        }
+
+        val builder = LocationSettingsRequest.Builder()
+            .addLocationRequest(locationRequest!!)
+
+        val client: SettingsClient = LocationServices.getSettingsClient(activity as Activity)
+        val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
     }
 }
