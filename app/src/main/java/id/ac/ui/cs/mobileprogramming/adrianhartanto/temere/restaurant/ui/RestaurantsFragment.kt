@@ -6,6 +6,7 @@ import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,11 +16,13 @@ import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.R
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.databinding.FragmentRestaurantsBinding
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.di.Injectable
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.di.injectViewModel
+import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.data.Restaurant
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.ui.GridSpacingItemDecoration
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.ui.VerticalItemDecoration
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.ui.hide
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.ui.setTitle
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.util.ConnectivityUtil
+import kotlinx.android.synthetic.main.fragment_restaurants.*
 import javax.inject.Inject
 
 class RestaurantsFragment : Fragment(), Injectable {
@@ -84,6 +87,16 @@ class RestaurantsFragment : Fragment(), Injectable {
 
         args.categoryName?.let { setTitle(it) }
         subscribeUi(adapter)
+
+        binding.randomButton.setOnClickListener {
+            viewModel.restaurants.observe(viewLifecycleOwner) { restaurantPageList ->
+                val restaurantsFound = restaurantPageList.size
+                val randomIndex = (0 until restaurantsFound -1).random()
+                val randomRestaurant : Restaurant? = restaurantPageList[randomIndex]
+                val direction = RestaurantsFragmentDirections.actionToRestaurantDetailFragment(randomRestaurant!!.id)
+                it.findNavController().navigate(direction)
+            }
+        }
 
         setHasOptionsMenu(true)
         return binding.root

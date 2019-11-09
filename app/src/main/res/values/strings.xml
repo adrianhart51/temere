@@ -20,6 +20,7 @@
     <string name="year">Year: %d</string>
     <string name="share_restaurant">Check out %s Restaurant : %s</string>
     <string name="share_lego_set">Check out %s Lego set : %s</string>
+    <string name="random">Random Pick</string>
 
     <!-- Accessibility -->
     <string name="a11y_legoset_item_image">Picture of Lego Set</string>

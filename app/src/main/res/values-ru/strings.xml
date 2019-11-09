@@ -16,6 +16,7 @@
     <string name="year">Год: %d</string>
     <string name="share_restaurant">Cek %s Restoran : %s</string>
     <string name="share_lego_set">Отличный %s Lego набор : %s</string>
+    <string name="random">Pilih Acak</string>
 
     <!-- Accessibility -->
     <string name="a11y_legoset_item_image">Изображение Lego набора</string>
