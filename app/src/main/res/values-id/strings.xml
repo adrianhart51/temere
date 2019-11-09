@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Translatable resources -->
+    <string name="filter" translation_description="Common Filter">Saring</string>
+    <string name="grid" translation_description="Common Filter">Ganti antara tampilan daftar dan kisi-kisi</string>
+    <string name="categories_title">Lihat Kategori</string>
+    <string name="legothemes_title">Lihat Tema</string>
+    <string name="restaurants_title">Restoran Terdekat</string>
+    <string name="legosets_title">Lihat Semua Set</string>
+    <string name="restaurant_details_title">Detail Restoran</string>
+    <string name="legoset_details_title">Detail set</string>
+    <string name="navigation_drawer_header_content_description">Logo header navigasi</string>
+    <string name="santa_claus_quote">Santa Claus akan mempertimbangkan permintaan</string>
+    <string name="menu_item_share" translation_description="The label for the Share menu item">Bagikan</string>
+    <string name="number_of_parts">Nomor bagian: %d</string>
+    <string name="year">Tahun: %d</string>
+    <string name="share_restaurant">Lihat %s Restoran : %s</string>
+    <string name="share_lego_set">Lihat %s Lego set : %s</string>
+    <string name="random">Pilih Acak</string>
+
+    <!-- Accessibility -->
+    <string name="a11y_legoset_item_image">Gambar Set Lego</string>
+    <string name="a11y_restaurant_item_image">Gambar Restoran</string>
+</resources>
