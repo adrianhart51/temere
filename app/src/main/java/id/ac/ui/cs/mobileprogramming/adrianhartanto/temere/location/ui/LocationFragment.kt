@@ -2,30 +2,24 @@ package id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.location.ui
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.location.Location
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.Task
-import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.R
-import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.data.Result
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.databinding.FragmentCategoriesBinding
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.di.Injectable
-import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.di.injectViewModel
-import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.ui.VerticalItemDecoration
-import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.ui.hide
-import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.ui.show
-import com.google.android.material.snackbar.Snackbar
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
-import javax.inject.Inject
 
 class LocationFragment : Fragment(), Injectable {
 
@@ -44,7 +38,19 @@ class LocationFragment : Fragment(), Injectable {
         val binding = FragmentCategoriesBinding.inflate(inflater, container, false)
         context ?: return binding.root
 
-        getCurrentLocation(categoryId)
+        val isConnected: Boolean = checkNetworkConnection()
+        if (isConnected) {
+            getCurrentLocation(categoryId)
+        } else {
+            val message = "Please turn on your network connection!"
+            val duration = Toast.LENGTH_SHORT
+            val toast = Toast.makeText(context, message, duration)
+            val direction = LocationFragmentDirections.actionToCategoryFragment()
+
+            toast.show()
+
+            findNavController().navigate(direction)
+        }
 
         setHasOptionsMenu(true)
         return binding.root
@@ -75,5 +81,15 @@ class LocationFragment : Fragment(), Injectable {
 
         val client: SettingsClient = LocationServices.getSettingsClient(activity as Activity)
         val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
+    }
+
+    fun checkNetworkConnection() : Boolean {
+        val connected: Boolean
+        val connectivityManager = context!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val mobileDataConnectionState = connectivityManager!!.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).state
+        val wifiConnectionState = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).state
+
+        connected = mobileDataConnectionState == NetworkInfo.State.CONNECTED || wifiConnectionState == NetworkInfo.State.CONNECTED
+        return connected
     }
 }
