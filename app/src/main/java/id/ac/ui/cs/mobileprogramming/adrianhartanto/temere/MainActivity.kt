@@ -23,6 +23,7 @@ import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import androidx.navigation.fragment.findNavController
+import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.notification.NotificationService
 
 
 class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
@@ -50,7 +51,10 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        // Set up navigation menu
+        val notification = NotificationService.getNotification("Hey check this out!", this)
+        if (notification != null) {
+            NotificationService.scheduleDailyNotification(notification, this)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

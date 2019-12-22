@@ -5,7 +5,7 @@ import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.api.ZomatoService
 import javax.inject.Inject
 
 /**
- * Works with the Lego API to get data.
+ * Works with the API to get data.
  */
 class RestaurantRemoteDataSource @Inject constructor(private val service: ZomatoService) : BaseDataSource() {
 
