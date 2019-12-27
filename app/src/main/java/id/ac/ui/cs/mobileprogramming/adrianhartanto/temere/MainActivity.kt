@@ -11,19 +11,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.ui.RestaurantsFragment
-import androidx.navigation.ui.setupWithNavController
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.databinding.ActivityMainBinding
-import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.restaurant.ui.RestaurantsFragmentDirections
 import javax.inject.Inject
-import android.R.id
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import androidx.navigation.fragment.findNavController
-import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.notification.NotificationService
 
 
 class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
@@ -51,10 +42,13 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        val notification = NotificationService.getNotification("Hey check this out!", this)
-        if (notification != null) {
-            NotificationService.scheduleDailyNotification(notification, this)
-        }
+//        val notification = NotificationService.getNotification("Hey check this out!", this)
+//        if (notification != null) {
+//            NotificationService.scheduleDailyNotification(notification, this)
+//        }
+//        Intent(this, NotificationBackgroundService::class.java).also { intent ->
+//            startService(intent)
+//        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
