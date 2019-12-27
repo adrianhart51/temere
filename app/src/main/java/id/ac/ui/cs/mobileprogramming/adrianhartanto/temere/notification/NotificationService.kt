@@ -11,7 +11,6 @@ import androidx.core.content.ContextCompat.getSystemService
 import id.ac.ui.cs.mobileprogramming.adrianhartanto.temere.R
 import java.util.*
 
-
 class NotificationService {
     companion object {
         fun scheduleNotification(notification: Notification, delay: Int, context: Context) {
@@ -50,8 +49,7 @@ class NotificationService {
             var intendedTime: Long = firingCal.getTimeInMillis()
             val currentTime: Long = currentCal.getTimeInMillis()
 
-            if (intendedTime >= currentTime) { // you can add buffer time too here to ignore some small differences in milliseconds
-// set from today
+            if (intendedTime >= currentTime) {
                 alarmManager!!.setRepeating(
                     AlarmManager.RTC,
                     intendedTime,
